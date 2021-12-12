@@ -20,12 +20,19 @@ jupyter notebook README.ipynb
   #+end_example
 
   Upon evaluating the network the following was achieved
-      #+begin_quote
+      #+begin_example
 Accuracy : 0.9167
 Precision : 0.9268
 Recall : 0.8928
 F1 score : 0.9090
-    #+end_quote
+    #+end_example
+
+* Dataset
+  * Dataset :: Used the =Data Folder/processed.cleveland.data= from
+    https://archive.ics.uci.edu/ml/datasets/Heart+Disease
+
+  * Pair plot for the features
+    [[file:pair_plot.png][file:pair_plot.png]]
 
 * Prediction model
 
@@ -75,17 +82,17 @@ F1 score : 0.9090
 
    The following metric was used to evaluate the network
 
-  - [X] Accuracy/F1/Recall/Presion
+  1) Accuracy/F1/Recall/Presion
 
-    #+begin_quote
-Accuracy : 0.9166666666666666
-Precision : 0.9259259259259259
-Recall : 0.8928571428571429
-F1 score : 0.9090909090909091
-    #+end_quote
+     #+begin_example
+ Accuracy : 0.9166666666666666
+ Precision : 0.9259259259259259
+ Recall : 0.8928571428571429
+ F1 score : 0.9090909090909091
+     #+end_example
 
-  - [X] Confusion matrix
-    [[file:cm.png][file:cm.png]]
+  2) Confusion matrix
+     [[file:cm.png][file:cm.png]]
 
 * Conclusion
 
@@ -93,7 +100,3 @@ F1 score : 0.9090909090909091
   - K-fold Cross Validation
   - Use grid search get the best hyper-parameter for said model.
   - Try more tradition machine learning model like Decision Tree, SVM etc.
-
-* Reference
-  + Dataset :: Used the =Data Folder/processed.cleveland.data= from
-    https://archive.ics.uci.edu/ml/datasets/Heart+Disease
