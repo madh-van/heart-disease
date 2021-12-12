@@ -1,0 +1,99 @@
+#+title: Heart Disease project
+#+author: Madhvan Krishnan
+#+OPTIONS: toc:nil
+#+date: 2021-04-23
+
+* Introduction
+
+  The README contains the required Exploratory data analysis (EDA) for
+  the dataset along with the training process.
+
+  Below is the code block to reproduce the computational environment of
+  the notebook (submitted as html format). Tested on a GNU/Linux system.
+
+  #+begin_example
+python3 -m venv .venv
+. .venv/bin/activate
+pip install --upgrade pip
+pip install notebook
+jupyter notebook README.ipynb
+  #+end_example
+
+  Upon evaluating the network the following was achieved
+      #+begin_quote
+Accuracy : 0.9167
+Precision : 0.9268
+Recall : 0.8928
+F1 score : 0.9090
+    #+end_quote
+
+* Prediction model
+
+  * Choice of classifier compared to other
+
+    Given the number of attributes and data points present in the
+    dataset were relatively small, a simple =logistic regression model= was
+    used (as a baseline). Other Machine learning models could be used
+    but as a baseline 
+
+  * Choice of pre-processing
+
+    The attributes of the dataset are as follows
+    - 5 Numeric values
+    - 9 Categorical values
+
+    The pre-processing for the categorical values was =one-hot encoded=, this
+    is to avoid the network from giving high weights to category
+    values (which is arbitrarily assigned).
+
+    For the numeric values it was =normalised= to values between 0 to 1,
+    with the same principle in mind.
+
+    Also changed the problem into binary classification to balance the
+    classes.
+
+  * Parameter choices
+    - 20 percent =stratified split= of the test dataset
+    - tol=1e-4
+    - penalty='l1'
+    - class_weight='balanced'; for improving the accuracy of unbalanced
+      dataset
+
+  * Avoid over-fitting
+
+    + =Early stopping= was used during the training process to stop the
+    model from over-fitting on the training set.
+
+    + Finally  =L1 Regularisation= is used to penalise the network
+      weights. Which is useful as a feature selection process with
+      wights set 0's for attributes that was not important.
+
+      [[file:feature_selection.png][file:feature_selection.png]]
+
+
+** Evaluate the model                                         
+
+   The following metric was used to evaluate the network
+
+  - [X] Accuracy/F1/Recall/Presion
+
+    #+begin_quote
+Accuracy : 0.9166666666666666
+Precision : 0.9259259259259259
+Recall : 0.8928571428571429
+F1 score : 0.9090909090909091
+    #+end_quote
+
+  - [X] Confusion matrix
+    [[file:cm.png][file:cm.png]]
+
+* Conclusion
+
+  This approach is a good base line to further improve the model.
+  - K-fold Cross Validation
+  - Use grid search get the best hyper-parameter for said model.
+  - Try more tradition machine learning model like Decision Tree, SVM etc.
+
+* Reference
+  + Dataset :: Used the =Data Folder/processed.cleveland.data= from
+    https://archive.ics.uci.edu/ml/datasets/Heart+Disease
